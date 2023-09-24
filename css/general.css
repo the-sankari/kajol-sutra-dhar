@@ -1,0 +1,35 @@
+:root{
+    --main-red:#dc143c;
+    --main-white:#f0f0f0;
+    --main-gray: #303841;
+    --main-blue:#45567d
+}
+
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--main-white);
+
+}
+h2{
+    font-size: 4.2rem;
+}
+h1, h2{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 700;
+    text-align: center;
+}
+
+a{
+    text-decoration: none;
+    color: var(--main-white);
+}
+
+img{
+    display: block;
+}
