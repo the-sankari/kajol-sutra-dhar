@@ -1,0 +1,52 @@
+#home{
+    background-color: var(--primary-color);
+    height: 98vh;
+    max-height: 100vh;
+    width: 100vw;
+    /* background: url(../../img/Property\ 1=Default.png) no-repeat; */
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.preload{
+    display: block;
+    position: absolute;
+}
+.greeting h1{
+    font-size: 2rem;
+}
+.landing{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.logo-img img{
+    width: 450px;
+    height: 100px;
+    margin: 40px auto;
+}
+
+
+/* load home */
+.load{
+    width: 80%;
+    height: 200px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+}
+.upper-curve{
+    background-color: red;
+    height: 150px;
+    width: 100%;
+    /* z-index: 55; */
+    content: 'kajol';
+    border-bottom-right-radius: 100%;
+}
