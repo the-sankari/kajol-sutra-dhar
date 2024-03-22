@@ -2,9 +2,23 @@ header {
   display: flex;
   /* border: 1px solid; */
   padding-top: 20px;
-  justify-content: center;
+  /* justify-content: center; */
   position: sticky;
   background-color: var(--primary-color);
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 999;
+  opacity: .9;
+
+}
+
+.header-container{
+  width: 100vw;
+  display: flex;
+  position: sticky;
+  
 
 }
 
