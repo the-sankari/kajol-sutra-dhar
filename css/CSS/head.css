@@ -4,7 +4,7 @@ header {
   padding-top: 20px;
   /* justify-content: center; */
   position: sticky;
-  background-color: var(--primary-color);
+  /* background-color: var(--primary-color); */
   position: absolute;
   top: 0;
   right: 0;
