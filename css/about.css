@@ -29,8 +29,8 @@
   width: 50%;
   height: 500px;
   position: absolute;
-  right: -20%;
-  top: 30%;
+  left: 65%;
+  top: 40%;
   transform: translate(-50%, -20%);
   z-index: 100;
   font-size: var(--body-font-size);
@@ -41,12 +41,12 @@
 }
 
 .about-text p {
-    width: 100%;
+  width: 100%;
   margin: 16px auto;
 }
 
-.about-text span{
-    font-weight: var(--heading-font-weight);
+.about-text span {
+  font-weight: var(--heading-font-weight);
 }
 .icon-container {
   position: absolute;
