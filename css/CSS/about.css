@@ -1,10 +1,59 @@
 #about {
+  position: relative;
   display: flex;
   flex-direction: column;
+  width: 100vw;
+  height: 80vh;
+  max-height: 90vh;
+  overflow: hidden;
+}
+#about h2 {
+  font-size: 120px;
+  color: var(--body-font-color);
+  font-family: var(--body-font-family);
+  padding: 20px auto;
+  margin: 20px 30px;
+}
+.char_2 {
+  position: absolute;
+  left: 20%;
+  bottom: -10%;
+  transform: translate(-50%, -20%);
+}
+.char_2 img {
+  height: 500px;
+  opacity: 01;
 }
 
+.about-text {
+  width: 50%;
+  height: 500px;
+  position: absolute;
+  right: -20%;
+  top: 30%;
+  transform: translate(-50%, -20%);
+  z-index: 100;
+  font-size: var(--body-font-size);
+  color: var() --body-font-color;
+  font-family: var(--body-font-family);
+  line-height: 1.8rem;
+  overflow: hidden;
+}
+
+.about-text p {
+    width: 100%;
+  margin: 16px auto;
+}
+
+.about-text span{
+    font-weight: var(--heading-font-weight);
+}
+.icon-container {
+  position: absolute;
+  bottom: 0;
+  right: 10%;
+}
 .ellipse {
-  align-self: center;
   width: 300px;
   height: 150px;
   background-color: transparent;
@@ -12,7 +61,6 @@
   position: relative;
   animation: rotateEllipse 8s infinite linear;
   transform-style: preserve-3d;
-  
 }
 
 .icon img {
@@ -21,10 +69,10 @@
 }
 
 .icon {
-    margin: 10px;
-    border-bottom-left-radius: 50%;
-    border-bottom-right-radius: 50%;
-    box-shadow: 0px -40px 50px 10px #dddbdb70; /* Added box-shadow with a negative spread radius */
+  margin: 10px;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+  box-shadow: 0px -40px 50px 10px #dddbdb70; /* Added box-shadow with a negative spread radius */
 }
 
 .light-effect {
@@ -32,7 +80,7 @@
   top: -90%;
   width: 4em;
   height: 70px;
-  background: linear-gradient(180deg,#ffffff46, #ffffffc3,#ffffff12);
+  background: linear-gradient(180deg, #ffffff46, #ffffffc3, #ffffff12);
 
   animation: lightEffect 2s infinite alternate ease-in-out;
   z-index: -1;
