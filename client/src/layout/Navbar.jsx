@@ -12,7 +12,7 @@ const Navbar = () => {
         {/* Logo */}
         <Link to="/" className="flex items-center space-x-3">
           <span className="text-skin-accent font-futuristic text-xl tracking-wide hidden sm:inline">
-            Kajol.AI
+            KDEV
           </span>
         </Link>
 
