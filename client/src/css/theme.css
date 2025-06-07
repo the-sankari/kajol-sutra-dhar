@@ -1,0 +1,17 @@
+:root {
+  --bg: #ffffff;
+  --text: #141416;
+  --accent: #00f0ff; /* default cyan */
+  --accent-secondary: #ff2eec; /* magenta */
+  --panel: rgba(0, 0, 0, 0.03);
+  --glow-color: #ff2eec; /* magenta glow for light mode */
+}
+
+html.dark {
+  --bg: #04020a;
+  --text: #b0b2bd;
+  --accent: #00f0ff;
+  --accent-secondary: #ff2eec;
+  --panel: rgba(255, 255, 255, 0.04);
+  --glow-color: #00f0ff; /* cyan glow for dark mode */
+}

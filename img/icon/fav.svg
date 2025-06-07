@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
-  <!-- Background Circle -->
-  <circle cx="50" cy="50" r="45" fill="#dc143c" />
-
-  <!-- Text -->
-  <text x="28" y="70" font-family="Tahoma, sans-serif" font-size="48" fill="#f0f0f0">TS</text>
-</svg>
