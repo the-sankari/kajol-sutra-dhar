@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import ThemeToggle from "./ThemeToggle"; // make sure path is correct
+import ThemeToggle from "../components/ThemeToggle"; // make sure path is correct
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
