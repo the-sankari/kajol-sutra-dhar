@@ -4,7 +4,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
-import './css/theme.css'; 
+import "./css/theme.css";
 function App() {
   return (
     <Router>
