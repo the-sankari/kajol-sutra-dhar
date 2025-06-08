@@ -5,7 +5,8 @@ import MoodScanner from "../AI/MoodScanner";
 import AdviceGenerator from "../AI/AdviceGenerator";
 import FuturisticHUDContainer from "../AI/FuturisticHUDContainer";
 
-const AIProfileCompanion = () => {
+const AIProfileCompanions
+ = () => {
   const messages = [
     "🧠 Syncing your neural blueprint...",
     "📡 Tuning emotional resonance frequency...",
@@ -52,4 +53,5 @@ const AIProfileCompanion = () => {
   );
 };
 
-export default AIProfileCompanion;
+export default AIProfileCompanions
+;
