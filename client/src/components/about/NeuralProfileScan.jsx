@@ -16,18 +16,23 @@ const NeuralProfileScan = () => {
   };
 
   return (
-    <div className="relative flex flex-col items-center justify-center gap-10 py-20 px-4">
+    <div className="relative flex flex-col items-center justify-center py-24 px-4 bg-skin-panel border border-skin-accent rounded-2xl shadow-glow-sm transition-all duration-700">
       {/* Grid Background */}
-      <div className="absolute inset-0 -z-10 opacity-20 pointer-events-none">
+      <div className="absolute inset-0 -z-10 opacity-10 pointer-events-none">
         <div className="w-full h-full bg-grid bg-center bg-[length:40px_40px] animate-grid-glow" />
       </div>
 
-      {/* Scan Trigger */}
+      {/* Title */}
+      <h2 className="text-3xl md:text-4xl text-center font-bold text-skin-accent font-futuristic tracking-widest mb-8">
+        Neural Profile Scan
+      </h2>
+
+      {/* Trigger Button */}
       {!started && (
         <motion.button
           onClick={triggerScan}
           onMouseEnter={triggerScan}
-          className="px-6 py-3 rounded-md bg-black/70 text-skin-accent border border-skin-accent2 font-mono shadow-lg shadow-cyan-400/20 hover:scale-105 transition"
+          className="px-6 py-3 rounded-md bg-black/70 text-skin-accent border border-skin-accent2 font-mono shadow-lg hover:scale-105 transition"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
@@ -35,28 +40,23 @@ const NeuralProfileScan = () => {
         </motion.button>
       )}
 
-      {/* Terminal + ID Card Overlay */}
+      {/* Terminal + ID Card */}
       {started && (
-        <div className="relative w-full max-w-xl">
-          {/* ID Card Overlay */}
+        <div className="mt-10 w-full max-w-xl flex flex-col items-center relative">
+          {/* ID Card */}
           {revealed && (
             <motion.div
-              initial={{ opacity: 0, y: -10 }}
+              initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="absolute  left-1/2 -translate-x-1/2 z-20 w-[280px] h-[160px] bg-gradient-to-br from-cyan-500/10 to-sky-500/10 border border-cyan-400/40 backdrop-blur-md rounded-xl p-3 shadow-[0_0_30px_#00f0ff44] animate-holo-id flex items-center gap-4"
-              style={{
-                bottom: "100%",
-                transform: "translate(-50%)",
-                pointerEvents: "none",
-              }}
+              className="relative z-20 w-[280px] md:w-[320px] h-[170px] bg-gradient-to-br from-cyan-500/10 to-sky-500/10 border border-cyan-400/40 backdrop-blur-md rounded-xl p-4 shadow-[0_0_30px_#00f0ff44] animate-holo-id flex items-center gap-4 mb-8"
             >
-              <div className="w-20 h-20 rounded-md overflow-hidden border-2 border-cyan-300">
+              <div className="w-20 h-20 rounded-md overflow-hidden border-2 border-cyan-300 shrink-0">
                 <img
                   src="https://avatars.githubusercontent.com/u/88396582?v=4"
                   alt="ID Avatar"
                   className="w-full h-full object-cover"
-                  style={{ filter: "grayscale(0.5) brightness(0.5)" }}
+                  style={{ filter: "grayscale(0.5) brightness(0.6)" }}
                 />
               </div>
               <div className="text-cyan-200 font-mono text-xs space-y-1 text-left">
@@ -68,26 +68,24 @@ const NeuralProfileScan = () => {
             </motion.div>
           )}
 
-          {/* Terminal */}
+          {/* Terminal Prompt */}
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 1 }}
-            className="relative z-10 bg-skin-panel p-4 pt-24 rounded-lg border border-skin-accent2 font-mono text-skin-accent text-sm shadow-inner shadow-[inset_0_0_20px_#00f0ff33] backdrop-blur-md text-center"
+            className="relative z-10 w-full bg-skin-panel p-6 rounded-lg border border-skin-accent2 font-mono text-skin-accent text-sm shadow-inner text-center"
           >
             {!revealed ? (
               <>
-                <span className="block mb-1">&gt; Scanning ID card...</span>
-                <span className="block mb-1">
-                  &gt; Authenticating neural signature...
-                </span>
-                <span className="block mb-1">&gt; Please stand by...</span>
+                <p className="mb-2">&gt; Scanning ID card...</p>
+                <p className="mb-2">&gt; Authenticating neural signature...</p>
+                <p>&gt; Please stand by...</p>
               </>
             ) : (
               <>
-                <span className="block mb-1">&gt; Identity confirmed.</span>
-                <span className="block mb-1">&gt; Access granted.</span>
-                <span className="block mt-3">
+                <p className="mb-2">&gt; Identity confirmed.</p>
+                <p className="mb-2">&gt; Access granted.</p>
+                <p className="mt-3">
                   &gt;{" "}
                   <Typewriter
                     words={[
@@ -102,7 +100,7 @@ const NeuralProfileScan = () => {
                     deleteSpeed={30}
                     delaySpeed={1000}
                   />
-                </span>
+                </p>
               </>
             )}
           </motion.div>
