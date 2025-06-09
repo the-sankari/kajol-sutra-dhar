@@ -1,10 +1,20 @@
-const ProjectCard = ({ title, description, tech, github, live, image }) => {
+import { Link } from "react-router-dom";
+
+const ProjectCard = ({
+  title,
+  description,
+  tech,
+  github,
+  live,
+  image,
+  slug,
+}) => {
   const fallbackImage = "https://placehold.co/400x200?text=Project+Preview";
 
   return (
     <div
-      className="relative min-h-[460px] flex flex-col bg-skin-panel border border-skin-accent2/30 rounded-2xl overflow-hidden 
-                 shadow-[0_0_15px_#00f0ffaa] hover:shadow-[0_0_25px_#00f0ffaa] transition-shadow duration-200 group"
+      className="relative min-h-[500px] flex flex-col bg-skin-panel border border-skin-accent2/30 rounded-2xl overflow-hidden
+                 shadow-[0_0_25px_#00f0ffaa] hover:shadow-[0_0_40px_#00f0ffaa] transition duration-300 group"
     >
       <img
         src={image || fallbackImage}
@@ -22,7 +32,7 @@ const ProjectCard = ({ title, description, tech, github, live, image }) => {
             {description}
           </p>
 
-          <div className="flex flex-wrap gap-2 text-xs text-skin-accent2/70 italic mb-4">
+          <div className="flex flex-wrap gap-2 text-xs text-skin-accent2/70 italic mb-6">
             {tech.map((tag, index) => (
               <span
                 key={index}
@@ -34,13 +44,14 @@ const ProjectCard = ({ title, description, tech, github, live, image }) => {
           </div>
         </div>
 
-        <div className="flex gap-4 mt-6">
+        <div className="flex flex-wrap gap-3 mt-6">
           {live && (
             <a
               href={live}
               target="_blank"
               rel="noreferrer"
-              className="px-4 py-2 text-xs rounded-md border border-skin-accent2 text-skin-accent2 hover:bg-skin-accent2 hover:text-skin-bg transition duration-200"
+              className="px-4 py-2 text-xs rounded-md border border-skin-accent2 text-skin-accent2
+                         hover:bg-skin-accent2 hover:text-skin-bg transition duration-200"
             >
               🌐 Live Site
             </a>
@@ -50,10 +61,20 @@ const ProjectCard = ({ title, description, tech, github, live, image }) => {
               href={github}
               target="_blank"
               rel="noreferrer"
-              className="px-4 py-2 text-xs rounded-md border border-skin-accent2 text-skin-accent2 hover:bg-skin-accent2 hover:text-skin-bg transition duration-200"
+              className="px-4 py-2 text-xs rounded-md border border-skin-accent2 text-skin-accent2
+                         hover:bg-skin-accent2 hover:text-skin-bg transition duration-200"
             >
               🛠 GitHub
             </a>
+          )}
+          {slug && (
+            <Link
+              to={`/projects/${slug}`}
+              className="px-4 py-2 text-xs rounded-md border border-skin-accent2 text-skin-accent2
+                         hover:bg-skin-accent2 hover:text-skin-bg transition duration-200"
+            >
+              🔍 More Info
+            </Link>
           )}
         </div>
       </div>
