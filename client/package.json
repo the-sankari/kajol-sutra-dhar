@@ -20,6 +20,7 @@
     "react-hot-toast": "^2.5.2",
     "react-i18next": "^15.5.2",
     "react-icons": "^5.5.0",
+    "react-markdown": "^8.0.6",
     "react-mouse-particles": "^1.1.5",
     "react-parallax-tilt": "^1.7.296",
     "react-redux": "^9.2.0",
