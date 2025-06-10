@@ -1,7 +1,6 @@
-// components/comments/CommentForm.jsx
 import { useState } from "react";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-import { db } from "../../services/firebase";
+import { db } from "../../services/firebase/firebase";
 
 const CommentForm = ({ slug }) => {
   const [name, setName] = useState("");
