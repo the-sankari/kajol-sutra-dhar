@@ -1,10 +1,16 @@
 :root {
   --bg: #ffffff;
   --text: #141416;
-  --accent: #00f0ff; /* default cyan */
-  --accent-secondary: #ff2eec; /* magenta */
+  --accent: #00f0ff; /* Primary neon cyan */
+  --accent-secondary: #ff2eec; /* Magenta for highlights */
   --panel: rgba(0, 0, 0, 0.03);
-  --glow-color: #ff2eec; /* magenta glow for light mode */
+  --glow-color: #ff2eec; /* Used for glow, matches accent-secondary */
+
+  /* Optional extra tokens */
+  --border-radius: 1rem;
+  --transition-fast: 0.2s;
+  --transition-medium: 0.4s;
+  --font-heading: "Share Tech Mono", monospace;
 }
 
 html.dark {
@@ -13,5 +19,55 @@ html.dark {
   --accent: #00f0ff;
   --accent-secondary: #ff2eec;
   --panel: rgba(255, 255, 255, 0.04);
-  --glow-color: #00f0ff; /* cyan glow for dark mode */
+  --glow-color: #00f0ff;
+}
+
+/* Body & Scrollbar */
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-heading), sans-serif;
+  transition: background-color var(--transition-medium),
+    color var(--transition-medium);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-secondary);
+  border-radius: 4px;
+}
+
+/* Link effects */
+a {
+  transition: color var(--transition-fast), text-shadow var(--transition-fast);
+}
+
+a:hover {
+  color: var(--accent);
+  text-shadow: 0 0 4px var(--accent);
+}
+
+/* Optional Utility: Glass Effect */
+.glass {
+  background: var(--panel);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--accent-secondary);
+  border-radius: var(--border-radius);
+}
+
+/* Optional Button Glow Effect */
+.glow-button {
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  transition: all var(--transition-fast) ease;
+}
+
+.glow-button:hover {
+  background-color: var(--accent);
+  color: var(--bg);
+  box-shadow: 0 0 10px var(--glow-color);
 }
