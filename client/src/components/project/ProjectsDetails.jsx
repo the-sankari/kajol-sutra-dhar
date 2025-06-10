@@ -1,9 +1,24 @@
 import { useParams, Link } from "react-router-dom";
+import { useEffect } from "react";
 import { projects } from "../../data/projects";
+import ReactMarkdown from "react-markdown";
+
+import HeroMedia from "../shared/HeroMedia";
+import Breadcrumb from "../shared/Breadcrumb";
+import ProjectTabs from "../tabs/ProjectTabs";
+import CommentForm from "../common/CommentForm";
+import CommentList from "../common/CommentList";
+import ShareLinks from "../shared/ShareLinks";
+import RelatedProjects from "../shared/RelatedProjects";
+import ActionButtons from "../shared/ActionsButton";
 
 const ProjectDetails = () => {
   const { slug } = useParams();
   const project = projects.find((p) => p.slug === slug);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [slug]);
 
   if (!project) {
     return (
@@ -13,63 +28,69 @@ const ProjectDetails = () => {
     );
   }
 
-  return (
-    <section
-      className="min-h-screen px-6 py-16 max-w-3xl mx-auto text-skin-text 
-             opacity-0 animate-fadeIn"
-    >
-      <h1 className="text-3xl md:text-4xl font-bold text-skin-accent2 mb-6">
-        {project.name}
-      </h1>
+  const related = projects
+    .filter(
+      (p) =>
+        p.slug !== slug && p.tags?.some((tag) => project.tags?.includes(tag))
+    )
+    .slice(0, 3);
 
-      <img
-        src={project.image}
-        alt={project.name}
-        className="w-full h-64 object-cover rounded-lg border border-skin-accent2/20 mb-6"
+  return (
+    <section className="min-h-screen px-4 md:px-8 py-20 bg-skin-bg text-skin-text">
+      <Breadcrumb paths={["Home", "Projects", project.name]} />
+
+      <HeroMedia
+        title={project.name}
+        media={project.media}
+        image={project.image}
       />
 
-      <p className="text-base mb-4 leading-relaxed text-skin-text/90">
-        {project.description}
-      </p>
-
-      <div className="flex flex-wrap gap-3 mb-8">
-        {project.tags.map((tag, i) => (
-          <span
-            key={i}
-            className="px-3 py-1 text-xs rounded-full border border-skin-accent2 text-skin-accent2"
-          >
-            {tag}
-          </span>
-        ))}
-      </div>
-
-      <div className="flex gap-4">
-        {project.live && (
-          <a
-            href={project.live}
-            target="_blank"
-            rel="noreferrer"
-            className="px-4 py-2 text-sm rounded-md border border-skin-accent2 text-skin-accent2 hover:bg-skin-accent2 hover:text-skin-bg"
-          >
-            🌐 Live Site
-          </a>
-        )}
-        {project.github && (
-          <a
-            href={project.github}
-            target="_blank"
-            rel="noreferrer"
-            className="px-4 py-2 text-sm rounded-md border border-skin-accent2 text-skin-accent2 hover:bg-skin-accent2 hover:text-skin-bg"
-          >
-            🛠 GitHub
-          </a>
+      {/* Description */}
+      <div className="max-w-5xl mx-auto mt-10">
+        {project.description && (
+          <ReactMarkdown className="prose prose-invert max-w-none text-skin-text/90 mb-10">
+            {project.description}
+          </ReactMarkdown>
         )}
       </div>
 
-      <div className="mt-12">
+      {/* Actions */}
+      <div className="max-w-5xl mx-auto">
+        <ActionButtons live={project.live} github={project.github} />
+      </div>
+
+      {/* Tabs */}
+      <div className="max-w-5xl mx-auto">
+        <ProjectTabs
+          tech={project.tags || []}
+          gallery={project.gallery || []}
+          challenges={project.challenges || []}
+        />
+      </div>
+
+      {/* Comments */}
+      <div className="max-w-5xl mx-auto mt-12">
+        <CommentForm slug={slug} />
+        <CommentList slug={slug} />
+      </div>
+
+      {/* Share */}
+      <div className="max-w-5xl mx-auto mt-12">
+        <ShareLinks />
+      </div>
+
+      {/* Related */}
+      {related.length > 0 && (
+        <div className="max-w-5xl mx-auto mt-16">
+          <RelatedProjects projects={related} />
+        </div>
+      )}
+
+      {/* Back Link */}
+      <div className="max-w-5xl mx-auto mt-12">
         <Link
           to="/projects"
-          className="text-skin-accent underline hover:text-skin-accent2"
+          className="text-skin-accent hover:underline inline-flex items-center gap-1"
         >
           ← Back to Projects
         </Link>

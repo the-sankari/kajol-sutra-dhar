@@ -12,6 +12,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.8.2",
     "axios": "^1.9.0",
+    "firebase": "^11.9.0",
     "framer-motion": "^12.16.0",
     "i18next": "^25.2.1",
     "lucide-react": "^0.513.0",
@@ -20,6 +21,7 @@
     "react-hot-toast": "^2.5.2",
     "react-i18next": "^15.5.2",
     "react-icons": "^5.5.0",
+    "react-markdown": "^8.0.6",
     "react-mouse-particles": "^1.1.5",
     "react-parallax-tilt": "^1.7.296",
     "react-redux": "^9.2.0",
