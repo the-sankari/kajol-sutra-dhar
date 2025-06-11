@@ -1,6 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { useEffect } from "react";
-import { projects } from "../../data/projects";
+import { useSelector } from "react-redux";
 import ReactMarkdown from "react-markdown";
 
 import HeroMedia from "../shared/HeroMedia";
@@ -14,7 +14,10 @@ import ActionButtons from "../shared/ActionsButton";
 
 const ProjectDetails = () => {
   const { slug } = useParams();
-  const project = projects.find((p) => p.slug === slug);
+
+  const project = useSelector((state) =>
+    state.projects.list.find((p) => p.slug === slug)
+  );
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -28,12 +31,14 @@ const ProjectDetails = () => {
     );
   }
 
-  const related = projects
-    .filter(
-      (p) =>
-        p.slug !== slug && p.tags?.some((tag) => project.tags?.includes(tag))
-    )
-    .slice(0, 3);
+  const related = useSelector((state) =>
+    state.projects.list
+      .filter(
+        (p) =>
+          p.slug !== slug && p.tags?.some((tag) => project.tags?.includes(tag))
+      )
+      .slice(0, 3)
+  );
 
   return (
     <section className="min-h-screen px-4 md:px-8 py-20 bg-skin-bg text-skin-text">

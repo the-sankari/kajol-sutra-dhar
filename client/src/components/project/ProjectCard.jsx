@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setSelectedProject } from "../../features/projects/projectsSlice.js";
 
 const ProjectCard = ({
   title,
@@ -9,6 +11,7 @@ const ProjectCard = ({
   image,
   slug,
 }) => {
+  const dispatch = useDispatch();
   const fallbackImage = "https://placehold.co/400x200?text=Project+Preview";
 
   return (
@@ -70,6 +73,19 @@ const ProjectCard = ({
           {slug && (
             <Link
               to={`/projects/${slug}`}
+              onClick={() =>
+                dispatch(
+                  setSelectedProject({
+                    title,
+                    description,
+                    tech,
+                    github,
+                    live,
+                    image,
+                    slug,
+                  })
+                )
+              }
               className="px-4 py-2 text-xs rounded-md border border-skin-accent2 text-skin-accent2
                          hover:bg-skin-accent2 hover:text-skin-bg transition duration-200"
             >

@@ -1,15 +1,18 @@
-import ProjectCard from "../project/ProjectCard";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { projects as allProjects } from "../../data/projects"; // adjust path as needed
+import ProjectCard from "../project/ProjectCard";
 
 const ProjectsSection = () => {
-  const previewProjects = allProjects.slice(0, 3).map((p) => ({
+  const { list: projects, loading } = useSelector((state) => state.projects);
+
+  const previewProjects = projects.slice(0, 3).map((p) => ({
     title: p.name,
     description: p.description,
     tech: p.tags,
     github: p.github,
     live: p.live || "",
     image: p.image,
+    slug: p.slug, // Needed for “More Info” link
   }));
 
   return (
@@ -23,11 +26,15 @@ const ProjectsSection = () => {
       </h2>
 
       {/* Project Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {previewProjects.map((project, idx) => (
-          <ProjectCard key={idx} {...project} />
-        ))}
-      </div>
+      {loading ? (
+        <p className="text-center text-skin-muted">Loading projects...</p>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {previewProjects.map((project, idx) => (
+            <ProjectCard key={idx} {...project} />
+          ))}
+        </div>
+      )}
 
       {/* See More Button */}
       <div className="mt-16 flex justify-center">
