@@ -17,7 +17,7 @@ export default function MoodScanner() {
   const [soundUrl, setSoundUrl] = useState("");
   const [muted, setMuted] = useState(true); // default: muted
   const audioRef = useRef(null);
-  const API_KEY = import.meta.env.VITE_FREESOUND_API_KEY;
+  const API_KEY = import.meta.env.VITE_FREESOUND_API;
 
   // Load mood and mute state
   useEffect(() => {
