@@ -13,7 +13,7 @@ const CommentForm = ({ slug }) => {
 
     setLoading(true);
     try {
-      await addDoc(collection(db, "comments", slug, "messages"), {
+      await addDoc(collection(db, "projects", slug, "comments"), {
         name,
         message,
         createdAt: serverTimestamp(),
