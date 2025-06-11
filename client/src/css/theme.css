@@ -1,25 +1,24 @@
 :root {
-  --bg: #ffffff;
-  --text: #141416;
-  --accent: #00f0ff; /* Primary neon cyan */
-  --accent-secondary: #ff2eec; /* Magenta for highlights */
-  --panel: rgba(0, 0, 0, 0.03);
-  --glow-color: #ff2eec; /* Used for glow, matches accent-secondary */
+  --bg: #e5e7eb;
+  --text: #1f2937;
+  --accent: #6b7280; /* Muted Gray */
+  --accent-secondary: #9ca3af;
+  --panel: rgba(0, 0, 0, 0.02);
+  --glow-color: #6b7280;
 
-  /* Optional extra tokens */
   --border-radius: 1rem;
   --transition-fast: 0.2s;
   --transition-medium: 0.4s;
-  --font-heading: "Share Tech Mono", monospace;
+  --font-heading: "Inter", sans-serif;
 }
 
 html.dark {
-  --bg: #04020a;
-  --text: #b0b2bd;
-  --accent: #00f0ff;
-  --accent-secondary: #ff2eec;
-  --panel: rgba(255, 255, 255, 0.04);
-  --glow-color: #00f0ff;
+  --bg: #0d0d0d;
+  --text: #d4d4d4;
+  --accent: #6b7280;
+  --accent-secondary: #9ca3af;
+  --panel: rgba(255, 255, 255, 0.03);
+  --glow-color: #6b7280;
 }
 
 /* Body & Scrollbar */
