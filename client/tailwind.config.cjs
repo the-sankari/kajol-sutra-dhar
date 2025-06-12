@@ -33,11 +33,17 @@ module.exports = {
           from: { opacity: 0 },
           to: { opacity: 1 },
         },
+        rocket: {
+          "0%": { transform: "translate(0, 0)", opacity: "1" },
+          "100%": { transform: "translate(200px, -200px)", opacity: "0" },
+        },
+
       },
       animation: {
         "pulse-glow": "pulseGlow 2.4s ease-in-out infinite",
         "ping-once": "ping 0.5s ease-in-out",
         "fade-in": "fadeIn 0.5s ease-in-out both",
+        rocket: "rocket 5s ease-out forwards",
       },
     },
   },
