@@ -194,3 +194,55 @@
 .animate-fadeIn {
   animation: fadeIn 0.4s ease-out forwards;
 }
+
+.flame {
+  transform-origin: center;
+  animation: pulseFlame 1s ease-in-out infinite;
+}
+
+@keyframes pulseFlame {
+  0%,
+  100% {
+    opacity: 0.7;
+    transform: scaleY(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleY(1.2);
+  }
+}
+.rocket-trail {
+  width: 40px;
+  height: 6px;
+  background: linear-gradient(90deg, #00f0ff, #ff00cc, #3333ff);
+  border-radius: 9999px;
+  filter: blur(4px);
+  opacity: 0.6;
+  animation: trailFade 1.6s ease-out forwards;
+}
+
+@keyframes trailFade {
+  0% {
+    transform: translate(0, 0) scaleX(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate(180px, -180px) scaleX(2);
+    opacity: 0;
+  }
+}
+
+@keyframes takeoff {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-300px) scale(0.8);
+    opacity: 0;
+  }
+}
+
+.animate-takeoff {
+  animation: takeoff 1.2s ease-in-out forwards;
+}
