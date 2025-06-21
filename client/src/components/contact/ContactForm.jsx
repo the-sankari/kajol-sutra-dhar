@@ -70,6 +70,7 @@ const ContactForm = () => {
       });
 
       const identityPayload = {
+        name: form.name,
         email: form.email,
         reason,
         time: new Date().toLocaleString(),
@@ -150,6 +151,7 @@ const ContactForm = () => {
       {submittedData && (
         <>
           <IdentityScannerPanel
+            name={submittedData.name}
             email={submittedData.email}
             reason={submittedData.reason}
             time={submittedData.time}
