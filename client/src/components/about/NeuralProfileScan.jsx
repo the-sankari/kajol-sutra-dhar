@@ -16,7 +16,7 @@ const NeuralProfileScan = () => {
   };
 
   return (
-    <div className="relative flex flex-col items-center justify-center py-24 px-4 bg-skin-panel border border-skin-accent rounded-2xl shadow-glow-sm transition-all duration-700">
+    <div className="relative flex flex-col items-center justify-center py-24 px-4 rounded-2xl bg-white/5 backdrop-blur-md transition-all duration-700 overflow-hidden before:absolute before:inset-0 before:rounded-2xl before:bg-gradient-to-br before:from-cyan-500/30 before:to-sky-500/10 before:animate-glow-ring before:z-[-1]">
       {/* Grid Background */}
       <div className="absolute inset-0 -z-10 opacity-10 pointer-events-none">
         <div className="w-full h-full bg-grid bg-center bg-[length:40px_40px] animate-grid-glow" />

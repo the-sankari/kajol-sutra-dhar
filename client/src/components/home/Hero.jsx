@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { Parallax } from "react-scroll-parallax";
 import AnimatedCursor from "../AnimatedCursor";
 
 const Hero = () => {
@@ -34,7 +33,10 @@ const Hero = () => {
       const triggerButtonEffect = (ref) => {
         if (ref.current) {
           ref.current.classList.add("animate-ping-once");
-          setTimeout(() => ref.current.classList.remove("animate-ping-once"), 500);
+          setTimeout(
+            () => ref.current.classList.remove("animate-ping-once"),
+            500
+          );
         }
       };
 
@@ -47,12 +49,16 @@ const Hero = () => {
           break;
         case "projects":
           response = "🚀 Jumping to Projects Sector...";
-          document.getElementById("projects-section")?.scrollIntoView({ behavior: "smooth", block: "start" });
+          document
+            .getElementById("projects-section")
+            ?.scrollIntoView({ behavior: "smooth", block: "start" });
           triggerButtonEffect(projectsBtnRef);
           break;
         case "about":
           response = "⚙️ Opening About Interface...";
-          document.getElementById("about-section")?.scrollIntoView({ behavior: "smooth", block: "start" });
+          document
+            .getElementById("about-section")
+            ?.scrollIntoView({ behavior: "smooth", block: "start" });
           triggerButtonEffect(aboutBtnRef);
           break;
         case "clear":
@@ -77,38 +83,31 @@ const Hero = () => {
       id="hero"
       style={{ minHeight: "60vh", minWidth: "100%" }}
     >
-      {/* Parallax Background Grid Glow */}
-      <Parallax speed={20}>
-        <div className="absolute inset-0 bg-[radial-gradient(#00f0ff_1px,transparent_1px)] bg-[size:24px_24px] opacity-10 pointer-events-none z-0" />
-      </Parallax>
+      {/* Background Grid Glow (static) */}
+      <div className="absolute inset-0 bg-[radial-gradient(#00f0ff_1px,transparent_1px)] bg-[size:24px_24px] opacity-10 pointer-events-none z-0" />
 
       {/* Terminal Container */}
       <div className="relative z-10 max-w-5xl w-full px-6 py-10 md:py-16 bg-skin-panel border border-skin-accent/20 rounded-2xl backdrop-blur-md shadow-[0_0_40px_#00f0ffaa]">
-
-        {/* Typing Status with Parallax */}
-        <Parallax speed={-10}>
-          <div className="text-skin-accent text-xl md:text-2xl mb-6 tracking-wide flex items-center">
-            <span className="text-skin-accent2">◉</span>
-            <span className="ml-2">{text}</span>
-            <AnimatedCursor />
-          </div>
-        </Parallax>
+        {/* Typing Status */}
+        <div className="text-skin-accent text-xl md:text-2xl mb-6 tracking-wide flex items-center">
+          <span className="text-skin-accent2">◉</span>
+          <span className="ml-2">{text}</span>
+          <AnimatedCursor />
+        </div>
 
         {/* Command Log */}
-        <Parallax speed={5}>
-          <div className="text-skin-text text-sm md:text-base mb-6 space-y-1 max-h-40 overflow-y-auto">
-            {log.map((entry, idx) => (
-              <div key={idx}>
-                <div>
-                  <span className="text-skin-accent2">❯</span> {entry.cmd}
-                </div>
-                {entry.response && (
-                  <div className="ml-4 text-skin-accent">{entry.response}</div>
-                )}
+        <div className="text-skin-text text-sm md:text-base mb-6 space-y-1 max-h-40 overflow-y-auto">
+          {log.map((entry, idx) => (
+            <div key={idx}>
+              <div>
+                <span className="text-skin-accent2">❯</span> {entry.cmd}
               </div>
-            ))}
-          </div>
-        </Parallax>
+              {entry.response && (
+                <div className="ml-4 text-skin-accent">{entry.response}</div>
+              )}
+            </div>
+          ))}
+        </div>
 
         {/* Input Field */}
         <div className="flex items-center border-b border-skin-accent2/40 pb-4 mb-6">

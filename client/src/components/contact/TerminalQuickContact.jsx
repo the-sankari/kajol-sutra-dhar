@@ -10,13 +10,14 @@ const LINKS = {
 const RESPONSES = {
   github: "Prepare to launch to Codebase Node. Proceed? (yes/no)",
   linkedin: "Establishing frequency bridge. Confirm launch? (yes/no)",
-  email: "📨 Please use the contact form above for secure messaging.",
+  email: "\uD83D\uDCE8 Please use the contact form above for secure messaging.",
   help: "Available commands: github, linkedin, email, clear, help",
   clear: "Terminal cleared.",
   default: "Unknown command. Try: github, linkedin, email, help, clear",
 };
 
 const VALID_COMMANDS = ["github", "linkedin", "email", "help", "clear"];
+const ALIASES = { gh: "github", li: "linkedin" };
 
 export default function TerminalQuickContact() {
   const [input, setInput] = useState("");
@@ -26,6 +27,7 @@ export default function TerminalQuickContact() {
   const [launchedLinks, setLaunchedLinks] = useState([]);
   const [history, setHistory] = useState([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
+  const [currentTime, setCurrentTime] = useState(new Date());
   const endRef = useRef(null);
   const inputRef = useRef(null);
 
@@ -35,8 +37,14 @@ export default function TerminalQuickContact() {
     }
   }, [log]);
 
+  useEffect(() => {
+    const interval = setInterval(() => setCurrentTime(new Date()), 30000);
+    return () => clearInterval(interval);
+  }, []);
+
   const handleCommand = (cmd) => {
-    const text = cmd.toLowerCase().trim();
+    const rawText = cmd.toLowerCase().trim();
+    const text = ALIASES[rawText] || rawText;
 
     if (text === "clear") {
       setLog([]);
@@ -53,7 +61,7 @@ export default function TerminalQuickContact() {
         setLog((prev) => [
           ...prev,
           { from: "user", text },
-          { from: "ai", text: "🚀 Launching..." },
+          { from: "ai", text: "\uD83D\uDE80 Launching..." },
         ]);
         setLaunching(true);
         setTimeout(() => {
@@ -66,14 +74,14 @@ export default function TerminalQuickContact() {
         setLog((prev) => [
           ...prev,
           { from: "user", text },
-          { from: "ai", text: "❌ Launch aborted." },
+          { from: "ai", text: "\u274C Launch aborted." },
         ]);
         setPendingLink(null);
       } else {
         setLog((prev) => [
           ...prev,
           { from: "user", text },
-          { from: "ai", text: "❓ Please type 'yes' or 'no' to continue." },
+          { from: "ai", text: "\u2753 Please type 'yes' or 'no' to continue." },
         ]);
       }
       return;
@@ -103,7 +111,7 @@ export default function TerminalQuickContact() {
     setLog((prev) => [
       ...prev,
       { from: "user", text: cmd },
-      { from: "ai", text: response },
+      { from: "ai", text: response, glitch: !RESPONSES[text] },
     ]);
 
     if (url) setPendingLink(url);
@@ -144,11 +152,12 @@ export default function TerminalQuickContact() {
 
   return (
     <motion.div
-      className="relative bg-skin-panel border border-skin-accent2 rounded-xl p-4 font-mono mt-8"
+      className="relative bg-skin-panel border border-skin-accent2 rounded-xl p-4 font-mono mt-8 max-w-3xl mx-auto"
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       id="terminal-contact"
+      onClick={() => inputRef.current?.focus()}
     >
       <div className="mb-3">
         <h3 className="text-skin-accent font-futuristic text-lg mb-1">
@@ -157,7 +166,7 @@ export default function TerminalQuickContact() {
         <div className="text-xs text-skin-accent2 space-y-1">
           <div>
             <span className="text-skin-accent">🕒 </span>
-            {new Date().toLocaleString("en-US", {
+            {currentTime.toLocaleString("en-US", {
               dateStyle: "short",
               timeStyle: "short",
             })}
@@ -183,9 +192,13 @@ export default function TerminalQuickContact() {
         {log.map((entry, i) => (
           <div
             key={i}
-            className={
-              entry.from === "user" ? "text-skin-accent2" : "text-skin-accent"
-            }
+            className={`$ {
+              entry.from === "user"
+                ? "text-skin-accent2"
+                : entry.glitch
+                ? "text-skin-accent animate-glitch"
+                : "text-skin-accent"
+            }`}
           >
             <span className="mr-2">{entry.from === "user" ? ">" : "🤖"}</span>
             {entry.text}
@@ -203,7 +216,7 @@ export default function TerminalQuickContact() {
           onKeyDown={handleKeyDown}
           placeholder="> enter command (e.g. github)"
           id="terminal-input"
-          className="w-full mt-3 bg-transparent border-b border-skin-accent text-skin-text text-sm py-1 focus:outline-none"
+          className="w-full mt-3 bg-transparent border-b border-skin-accent text-skin-text text-sm py-1 focus:outline-none caret-skin-accent animate-blink"
         />
       </form>
 
