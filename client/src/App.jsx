@@ -9,6 +9,7 @@ import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import "./css/theme.css";
 import Blog from "./pages/Blog";
+import SingleBlogPage from "./pages/SingleBlogPage";
 
 function App() {
   return (
@@ -21,6 +22,8 @@ function App() {
           <Route path="projects" element={<Projects />} />
           <Route path="projects/:slug" element={<ProjectDetails />} />
           <Route path="blog" element={<Blog />} />
+          <Route path="/blogs/:id" element={<SingleBlogPage />} />
+
           <Route path="contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
         </Route>
