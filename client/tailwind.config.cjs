@@ -41,12 +41,17 @@ module.exports = {
           "0%": { transform: "translate(0, 0)", opacity: "1" },
           "100%": { transform: "translate(200px, -200px)", opacity: "0" },
         },
+        glowRing: {
+          "0%, 100%": { opacity: 0.2, transform: "scale(1)" },
+          "50%": { opacity: 0.5, transform: "scale(1.03)" },
+        },
       },
       animation: {
         "pulse-glow": "pulseGlow 2.4s ease-in-out infinite",
         "ping-once": "ping 0.5s ease-in-out",
         "fade-in": "fadeIn 0.5s ease-in-out both",
         rocket: "rocket 5s ease-out forwards",
+        "glow-ring": "glowRing 8s ease-in-out infinite",
       },
     },
   },
