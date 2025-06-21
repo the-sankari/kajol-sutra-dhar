@@ -17,6 +17,10 @@ module.exports = {
       },
       boxShadow: {
         "glow-sm": "0 0 10px var(--glow-color)",
+        "neon-cyan": "0 0 10px #00f0ff, 0 0 20px #00f0ff",
+        "neon-purple": "0 0 10px #ff00ff, 0 0 20px #ff00ff",
+        "neon-glow":
+          "0 0 8px rgba(0, 255, 255, 0.6), 0 0 20px rgba(0, 255, 255, 0.3)",
       },
       keyframes: {
         pulseGlow: {
@@ -37,7 +41,6 @@ module.exports = {
           "0%": { transform: "translate(0, 0)", opacity: "1" },
           "100%": { transform: "translate(200px, -200px)", opacity: "0" },
         },
-
       },
       animation: {
         "pulse-glow": "pulseGlow 2.4s ease-in-out infinite",

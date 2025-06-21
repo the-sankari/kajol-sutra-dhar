@@ -7,7 +7,7 @@
     "tags": ["react", "framer-motion"],
     "summary": "A deep dive into my futuristic terminal interface using Framer Motion...",
     "description": "This post walks you through how I built a terminal-inspired portfolio interface using React, Framer Motion, and Tailwind CSS. Includes animations, identity scanners, and more.",
-    "image": "https://via.placeholder.com/480x270?text=AI+Scanner",
+    "image": "https://placehold.co/600x400?text=AI+Scanner",
     "author": "Kajol Sutra Dhar"
   },
   {
@@ -18,7 +18,7 @@
     "tags": ["tailwind", "css", "animation"],
     "summary": "Exploring scanline effects, neon glows, and animation timing with ease...",
     "description": "Discover how to create futuristic CSS animations like scanlines, glowing text, and smooth UI transitions using only Tailwind CSS.",
-    "image": "https://via.placeholder.com/480x270?text=Quantum+CSS",
+    "image": "https://placehold.co/600x400?text=Quantum+CSS",
     "author": "Kajol Sutra Dhar"
   },
   {
@@ -29,7 +29,7 @@
     "tags": ["openai", "api", "react"],
     "summary": "Build smart assistants into your portfolio using OpenAI's ChatGPT API...",
     "description": "Step-by-step guide to integrating the OpenAI API in your React app. We'll create a terminal-style chatbot that responds to user queries using real-time AI.",
-    "image": "https://via.placeholder.com/480x270?text=OpenAI+UI",
+    "image": "https://placehold.co/600x400?text=OpenAI+UI",
     "author": "Kajol Sutra Dhar"
   },
   {
@@ -40,7 +40,7 @@
     "tags": ["firebase", "redux"],
     "summary": "Managing blog content with Firestore and Redux Toolkit...",
     "description": "This post demonstrates how to store, retrieve, and manage blog posts in Firebase Firestore using Redux Toolkit for clean state management.",
-    "image": "https://via.placeholder.com/480x270?text=Firebase+Redux",
+    "image": "https://placehold.co/600x400?text=Firebase+Redux",
     "author": "Kajol Sutra Dhar"
   },
   {
@@ -51,7 +51,7 @@
     "tags": ["timeline", "framer-motion"],
     "summary": "Building a vertical timeline layout with modals, hover effects, and animations...",
     "description": "Learn how to create an interactive vertical timeline blog layout with scroll-based animation reveals and modals for full content view.",
-    "image": "https://via.placeholder.com/480x270?text=Quantum+Timeline",
+    "image": "https://placehold.co/600x400?text=Quantum+Timeline",
     "author": "Kajol Sutra Dhar"
   },
   {
@@ -62,7 +62,7 @@
     "tags": ["terminal", "retro", "cli"],
     "summary": "Turn your blog list into a retro terminal with command prompts and blinking cursors...",
     "description": "We explore building a command-line-inspired blog UI using monospaced fonts, a blinking cursor, and dynamic prompts with filtering commands.",
-    "image": "https://via.placeholder.com/480x270?text=Terminal+UI",
+    "image": "https://placehold.co/600x400?text=Terminal+UI",
     "author": "Kajol Sutra Dhar"
   },
   {
@@ -73,7 +73,7 @@
     "tags": ["firebase", "security", "forms"],
     "summary": "Build a secure, spam-protected futuristic contact portal...",
     "description": "We'll build a modern contact form with form validation, honeypot anti-spam, Firebase Functions, and reCAPTCHA integration — all for free.",
-    "image": "https://via.placeholder.com/480x270?text=Secure+Contact",
+    "image": "https://placehold.co/600x400?text=Secure+Contact",
     "author": "Kajol Sutra Dhar"
   },
   {
@@ -84,7 +84,7 @@
     "tags": ["design", "ui", "tailwind"],
     "summary": "Create immersive, glowing layouts that feel like they're from the year 3194...",
     "description": "Learn how to style your portfolio with neon glow effects, animated grid backgrounds, and futuristic themes using Tailwind and CSS variables.",
-    "image": "https://via.placeholder.com/480x270?text=Neon+Design",
+    "image": "https://placehold.co/600x400?text=Neon+Design",
     "author": "Kajol Sutra Dhar"
   },
   {
@@ -95,7 +95,7 @@
     "tags": ["firebase", "storage", "state"],
     "summary": "Track visitors' interactions and states using futuristic strategies...",
     "description": "Compare localStorage and Firebase Firestore for storing visitor sessions, preferences, and identity-linked interactions.",
-    "image": "https://via.placeholder.com/480x270?text=State+Storage",
+    "image": "https://placehold.co/600x400?text=State+Storage",
     "author": "Kajol Sutra Dhar"
   },
   {
@@ -106,7 +106,7 @@
     "tags": ["fonts", "design", "theming"],
     "summary": "How to set up custom CSS variables and font themes for dark/light mode...",
     "description": "Guide to using CSS variables, Tailwind's theme extension, and custom fonts like Share Tech Mono and Orbitron to build a futuristic UI.",
-    "image": "https://via.placeholder.com/480x270?text=Theme+Fonts",
+    "image": "https://placehold.co/600x400?text=Theme+Fonts",
     "author": "Kajol Sutra Dhar"
   },
   {
@@ -117,7 +117,7 @@
     "tags": ["vercel", "deployment", "react"],
     "summary": "A step-by-step guide to deploying your futuristic React apps...",
     "description": "Learn how to deploy your React applications on Vercel, including environment variables, custom domains, and performance optimizations.",
-    "image": "https://via.placeholder.com/480x270?text=Vercel+Deployment",
+    "image": "https://placehold.co/600x400?text=Vercel+Deployment",
     "author": "Kajol Sutra Dhar"
   }
 ]
