@@ -19,7 +19,7 @@ const ContactForm = () => {
   const [loading, setLoading] = useState(false);
   const [submittedData, setSubmittedData] = useState(null);
 
-  // Load identity data on page load
+  // Load saved identity data on mount
   useEffect(() => {
     const saved = localStorage.getItem("identityData");
     if (saved) {
@@ -30,11 +30,21 @@ const ContactForm = () => {
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!form.name || !form.email || !form.message) {
       toast.error("Please fill in all fields.");
+      return;
+    }
+
+    if (!validateEmail(form.email)) {
+      toast.error("Please enter a valid email address.");
       return;
     }
 
@@ -52,7 +62,8 @@ const ContactForm = () => {
     setLoading(true);
 
     try {
-      await addDoc(collection(db, "messages"), {
+      // ✅ Save to separate Firestore collection for contact form
+      await addDoc(collection(db, "contact_messages"), {
         ...form,
         reason,
         timestamp: serverTimestamp(),
@@ -62,11 +73,7 @@ const ContactForm = () => {
         email: form.email,
         reason,
         time: new Date().toLocaleString(),
-        visitorId:
-          "XC" +
-          Math.floor(Math.random() * 100) +
-          "-" +
-          Math.random().toString(36).substring(2, 4).toUpperCase(),
+        visitorId: `XC-${crypto.randomUUID().slice(0, 8).toUpperCase()}`,
       };
 
       setSubmittedData(identityPayload);
@@ -78,10 +85,16 @@ const ContactForm = () => {
       setCaptchaVerified(false);
     } catch (err) {
       console.error(err);
-      toast.error("❌ Failed to send message.");
+      toast.error(`❌ ${err.message || "Failed to send message."}`);
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleClearIdentity = () => {
+    setSubmittedData(null);
+    localStorage.removeItem("identityData");
+    localStorage.removeItem("hasSubmitted");
   };
 
   return (
@@ -116,13 +129,18 @@ const ContactForm = () => {
           <RecaptchaBlock
             siteKey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
             onVerify={() => setCaptchaVerified(true)}
-            onExpire={() => setCaptchaVerified(false)}
+            onExpire={() => {
+              setCaptchaVerified(false);
+              toast.error("🔒 reCAPTCHA expired. Please verify again.");
+            }}
           />
 
           <button
             type="submit"
             disabled={loading}
-            className="glow-button px-6 py-3 rounded-lg font-semibold"
+            className={`glow-button px-6 py-3 rounded-lg font-semibold ${
+              loading ? "opacity-60 cursor-not-allowed" : ""
+            }`}
           >
             {loading ? "Sending..." : "Send Message"}
           </button>
@@ -141,23 +159,21 @@ const ContactForm = () => {
           <EncryptedContactPortals />
 
           <button
-            onClick={() => {
-              setSubmittedData(null);
-              localStorage.removeItem("identityData");
-              localStorage.removeItem("hasSubmitted");
-            }}
+            onClick={handleClearIdentity}
             className="mt-4 text-xs underline text-skin-accent hover:text-skin-accent2 block mx-auto"
           >
             🔄 Clear Identity Panel
           </button>
         </>
       )}
+
       {!submittedData && (
         <>
           <QuickContactFallback />
           <TerminalQuickContact />
         </>
       )}
+
       <ToastContainer position="bottom-center" theme="dark" />
     </>
   );
