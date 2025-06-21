@@ -246,3 +246,29 @@
 .animate-takeoff {
   animation: takeoff 1.2s ease-in-out forwards;
 }
+
+/* Hologram + Scanline effect */
+.hologram-container::after {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 200%;
+  background: linear-gradient(
+    0deg,
+    transparent 0%,
+    rgba(0, 255, 255, 0.15) 50%,
+    transparent 100%
+  );
+  animation: scanline 3s linear infinite;
+}
+
+@keyframes scanline {
+  0% {
+    top: -100%;
+  }
+  100% {
+    top: 100%;
+  }
+}
