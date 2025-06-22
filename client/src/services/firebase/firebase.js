@@ -1,8 +1,13 @@
-// Import the functions you need from the SDKs you need
+// Import core Firebase modules
 import { initializeApp } from "firebase/app";
-import { collection, getFirestore, getDocs } from "firebase/firestore"; // ✅ FIXED HERE
 
-// Your web app's Firebase configuration
+// Firestore
+import { getFirestore, collection, getDocs } from "firebase/firestore";
+
+// ✅ Add this: Firebase Authentication
+import { getAuth } from "firebase/auth";
+
+// Firebase config using environment variables
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API,
   authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
@@ -13,10 +18,14 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
 
+// Firestore and Auth
 export const db = getFirestore(app);
+export const auth = getAuth(app); // ✅ Auth export added
+
+// Firestore collections
 export const projectsCollection = collection(db, "projects");
 
-// ✅ Now this works, since getDocs is imported above
+// Optional helper exports
 export { getDocs };
