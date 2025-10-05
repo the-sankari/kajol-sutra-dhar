@@ -1,16 +1,18 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getDocs } from "firebase/firestore"; // ✅ FIXED HERE
-import { projectsCollection } from "../../services/firebase/firebase";
+
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 
 export const fetchProjects = createAsyncThunk(
   "projects/fetchProjects",
   async () => {
-    const snapshot = await getDocs(projectsCollection);
-    const projects = snapshot.docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
-    }));
-    return projects;
+    const res = await fetch(`${API_URL}/projects`);
+    if (!res.ok) {
+      throw new Error(
+        `Failed to fetch projects: ${res.status} ${res.statusText}`
+      );
+    }
+    const data = await res.json();
+    return data.projects || [];
   }
 );
 
